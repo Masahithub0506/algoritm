@@ -1,0 +1,17 @@
+from random import randint
+
+
+def tail_rec(arr, minn=2**31-1, maxx=-2**31+1, summ=0, idx=0):
+    if idx >= len(arr):
+        return minn, maxx, summ
+    if arr[idx] < minn:
+        minn = arr[idx]
+    if arr[idx] > maxx:
+        maxx = arr[idx]
+    summ+=arr[idx]
+    return tail_rec(arr, minn, maxx, summ, idx+1)
+
+array = [randint(1, 100) for _ in range(10)]
+
+print(array)
+print(tail_rec(array))
