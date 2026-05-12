@@ -1,0 +1,26 @@
+from random import randint
+
+
+def binary_search(x, y, left, right):
+    if left > right:
+        return None
+
+    pin = (left + right) // 2
+
+    if y + pin == x:
+        return pin
+
+    if y + pin > x:
+        return binary_search(x, y, left, pin - 1)
+    if y + pin < x:
+        return binary_search(x, y, pin + 1, right)
+
+
+x = randint(1, 1000)
+y = randint(1, 1000)
+
+left, right = -1000, 1000
+
+z = binary_search(x, y, left, right)
+
+print(f"x: {x}, y: {y}, z: {z}, y+z: {y+z if z is not None else None}")
