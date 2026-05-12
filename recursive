@@ -1,0 +1,29 @@
+from random import randint
+
+
+array = [randint(1, 100) for _ in range(10)]
+
+
+def min_counter(arr, minn=2**31):
+    if not arr:
+        return minn
+    if arr[0] < minn:
+        minn = arr[0]
+    return min_counter(arr[1:], minn)
+
+
+def max_counter(arr, maxx=-2**31):
+    if not arr:
+        return maxx
+    if arr[0] > maxx:
+        maxx = arr[0]
+    return max_counter(arr[1:], maxx)
+
+
+def sum_counter(arr):
+    if not arr:
+        return 0
+    return arr[0] + sum_counter(arr[1:])
+
+print(array)
+print(min_counter(array), max_counter(array), sum_counter(array))
