@@ -1,0 +1,23 @@
+from random import randint
+
+array = [randint(1, 1000) for _ in range(10)]
+
+def minmax_minmaxsum(arr):
+    maxx = -2**31+1
+    minn = 2**31-1
+    s = 0
+    pr = 1
+    if not arr:
+        return {"min": 0, "max": 0, "s": 0, "pr":0}
+    for i in arr:
+        if i > maxx:
+            maxx=i
+        if i < minn:
+            minn=i
+        s+=i
+        pr*=i
+
+    return {"min": minn, "max": maxx, "sum": s, "prod": pr}
+
+print(array)
+print(minmax_minmaxsum(array))
