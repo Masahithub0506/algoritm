@@ -26,6 +26,13 @@ print(f"x: {x}, y: {y}, z: {z}, y+z: {y+z if z is not None else None}")
 
 
 
+
+
+
+
+
+
+
 итеративная версия 
 def binary_search_iter(x, y, left, right):
 
