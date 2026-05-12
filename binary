@@ -24,3 +24,22 @@ z = binary_search(x, y, left, right)
 print(f"x: {x}, y: {y}, z: {z}, y+z: {y+z if z is not None else None}")
 
 
+
+
+итеративная версия 
+def binary_search_iter(x, y, left, right):
+
+    while left <= right:
+
+        pin = (left + right) // 2
+
+        if y + pin == x:
+            return pin
+
+        elif y + pin > x:
+            right = pin - 1
+
+        else:
+            left = pin + 1
+
+    return None
