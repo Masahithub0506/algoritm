@@ -1,0 +1,35 @@
+import heapq
+
+
+graph = {
+    'A': [('B', 4), ('C', 2)],
+    'B': [('A', 4), ('C', 1), ('D', 5)],
+    'C': [('A', 2), ('B', 1), ('D', 8), ('E', 10)],
+    'D': [('B', 5), ('C', 8), ('E', 2), ('F', 6)],
+    'E': [('C', 10), ('D', 2), ('F', 2)],
+    'F': [('D', 6), ('E', 2)]
+}
+
+
+def deik(graph, start):
+    distances = {i: 2**31-1 for i in graph}
+    distances[start] = 0
+
+    pq = [(0, start)]
+
+    while pq:
+        curr_dist, node = heapq.heappop(pq)
+
+        if curr_dist > distances[node]:
+            continue
+
+        for neighbor, weight in graph[node]:
+            distance = curr_dist + weight
+
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+
+    return distances
+
+print(deik(graph, 'B'))
