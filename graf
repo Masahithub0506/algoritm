@@ -1,0 +1,22 @@
+graph = [
+    [0, 1, 0, 0],
+    [0, 0, 1, 0],
+    [0, 0, 0, 1],
+    [0, 0, 0, 0]
+]
+
+def check_graph_type(g):
+    for i in range(len(g)):
+        for j in range(len(g)):
+            if g[i][j] != g[j][i]:
+                return "НАПРАВЛЕННЫЙ"
+    return "НЕНАПРАВЛЕННЫЙ"
+
+
+for i in range(len(graph)):
+    for j in range(len(graph)):
+        if graph[i][j] == 1:
+            print(f"{i+1} → {j+1}")
+
+print()
+print("Тип графа:", check_graph_type(graph))
